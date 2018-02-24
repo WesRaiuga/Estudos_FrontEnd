@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <!-- Imports -->
+    <!-- FavIcon -->
+    <link rel="shortcut icon" href="assets\img\favicon.ico" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap.min.css">
+    <!-- CSS Custom -->
+    <link rel="stylesheet" href="assets\css\estilo.css">
+    <!-- ./ Imports -->
+
+    <title>Inscrição de Alunos</title>
+  </head>
+
+  <body ng-app="meuApp">
+
+    <!-- CABEÇALHO -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navbarCtrl">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="home.html"><img src="assets/img/cogumelo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Meus Formulários <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="form-01.html">Form 1</a></li>
+                <li><a href="form-02.html">Form 2</a></li>
+                <li><a href="form-03.html">Form 3</a></li>
+              </ul>
+            </li>
+            <li><a href="alunos.html">Alunos</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">{{dataHoje | date:'dd'}} de {{dataHoje | date:'MMMM'}} de {{dataHoje | date:'yyyy'}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- ./ Navbar -->
+    <!-- ./ CABEÇALHO -->
+
+    <!-- CONTEÚDO DA PÁGINA-->
+    <div class="container" ng-controller="CadAlunosCtrl">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1> Inscrição de Alunos <small> baseado em curso da Udemy </small></h1>
+      </div>
+      <!-- ./ Page Header -->
+
+      <!-- MAIN -->
+      <div class="row linha">
+        <!-- PAINEL -->
+        <div class="col-md-10 col-md-offset-1">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center"><b>{{titulo2}}</b></h3>
+            </div>
+            <div class="panel-body">
+              <!-- OPÇÕES -->
+              <div class="row">
+                <!-- Botão do modal -->
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Novo Aluno
+                  </button>
+                </div>
+                <!-- ./ Botão do modal -->
+
+                <!-- ./ Botão Apagar -->
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-danger" ng-click="apagarAluno(alunos)" ng-if="alunoSelecionado(alunos)">
+                    Apagar
+                  </button>
+                </div>
+                <!-- ./ Botão Apagar -->
+
+                <div class="col-md-6 col-md-offset-2">
+                  <div class="input-group">
+                    <label for="idBuscar" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></label>
+                    <input type="text" class="form-control" name="buscar" id="idBuscar" placeholder="Buscar" ng-model="buscar" ng-disabled="alunos.length < 1">
+                  </div>
+                </div>
+              </div>
+              <!-- ./ OPÇÕES -->
+
+              <!-- TABELA -->
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-responsive">
+                    <thead>
+                      <tr>
+                        <th><span class="glyphicon glyphicon-ok"></span></th>
+                        <th>RM</th>
+                        <th>Nome</th>
+                        <th>Curso</th>
+                        <th>Turma</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-class="{selecionado: aluno.selec}" ng-repeat="aluno in alunos | filter:buscar | orderBy: 'nome'">
+                        <td><input type="checkbox" ng-model="aluno.selec"/></td>
+                        <td>{{aluno.matricula}}</td>
+                        <td>{{aluno.nome}}</td>
+                        <td>{{aluno.cursos.curso}}</td>
+                        <td>{{aluno.turma | uppercase}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- ./ TABELA -->
+
+            </div>
+          </div>
+        </div>
+        <!-- ./ PAINEL -->
+      </div>
+
+      <!-- ./ MAIN -->
+
+      <!-- MODAL - Novo Aluno -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Inscrever Aluno</h4>
+            </div>
+
+            <div class="modal-body">
+              <!-- FORMULÁRIO -->
+              <form name="formAluno" class="form" action="#" method="post">
+                <!-- Linha 1 -->
+                <div class="row">
+                  <div class="form-group col-md-3">
+                    <label for="idMatricula">RM: <span class="obrigatorio">*</span></label></label>
+                    <input type="text" id="idMatricula" class="form-control" ng-model="aluno.matricula" ng-required="true">
+                  </div>
+                  <div class="form-group col-md-9">
+                    <label for="idNome">Nome: <span class="obrigatorio">*</span></label></label>
+                    <input type="text" id="idNome" class="form-control" ng-model="aluno.nome" ng-required="true">
+                  </div>
+                </div>
+                <!-- Linha 2 -->
+                <div class="row">
+                  <div class="form-group col-md-9">
+                    <label for="idCurso">Curso: <span class="obrigatorio">*</span></label></label>
+                    <select id="idCurso" class="form-control" ng-model="aluno.cursos" ng-options="item.curso for item in cursos" ng-required="true">
+                      <option value="" selected disabled>Selecione o curso</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="idTurma">Turma: <span class="obrigatorio">*</span></label></label>
+                    <input type="text" id="idTurma" class="form-control" ng-model="aluno.turma" ng-required="true">
+                  </div>
+                </div>
+
+              </form>
+              <!-- ./ FORMULÁRIO -->
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary" ng-click="addAluno(aluno)" ng-disabled="formAluno.$invalid">Salvar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- ./ MODAL - Novo Aluno -->
+
+    </div>
+    <!-- ./ CONTEÚDO DA PÁGINA-->
+
+    <!-- Imports JS -->
+    <!-- jQuery -->
+    <script src="assets\plugins\jquery-3.2.1.min.js"></script>
+    <!-- jQuery Mask Plugin -->
+    <script src="assets\plugins\jquery.mask.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="assets\plugins\bootstrap\js\bootstrap.min.js"></script>
+    <!-- AngularJS -->
+    <script src="assets\plugins\angular\angular.min.js"></script>
+    <!-- AngularJS i18n -->
+    <script src="assets\plugins\angular\i18n\angular-locale_pt-br.js"></script>
+    <!-- Módulo para AngularJS -->
+    <script src="assets\js\modulo-app.js"></script>
+    <!-- Controller da navbar -->
+    <script src="assets\js\navbar-ctrl.js"></script>
+    <!-- Controller do formulário -->
+    <script src="assets\js\alunos-ctrl.js"></script>
+    <!-- ./ Imports JS -->
+
+  </body>
+</html>

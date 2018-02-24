@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <!-- Imports -->
+  <!-- FavIcon -->
+  <link rel="shortcut icon" href="assets\img\favicon.ico" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap-theme.min.css">
+  <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap.min.css">
+  <!-- CSS Custom -->
+  <link rel="stylesheet" href="assets\css\estilo.css">
+  <!-- ./ Imports -->
+
+  <title>Formulário</title>
+</head>
+
+<body ng-app="meuApp">
+
+  <!-- CABEÇALHO -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navbarCtrl">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="home.html"><img src="assets/img/cogumelo.png"></a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Meus Formulários <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="form-01.html">Form 1</a></li>
+              <li><a href="form-02.html">Form 2</a></li>
+              <li><a href="form-03.html">Form 3</a></li>
+            </ul>
+          </li>
+          <li><a href="alunos.html">Alunos</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">{{dataHoje | date:'dd'}} de {{dataHoje | date:'MMMM'}} de {{dataHoje | date:'yyyy'}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- ./ Navbar -->
+  <!-- ./ CABEÇALHO -->
+
+  <!-- CONTEÚDO DA PÁGINA -->
+  <div class="main container" ng-controller="form01">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1> Cadastro Simples
+        <small>
+          <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="Formulário simples para cadastro de pessoa!"></span>
+        </small>
+      </h1>
+    </div>
+    <!-- ./ Page Header -->
+
+    <!-- MAIN -->
+    <form action="#" method="post">
+
+      <!-- Informações Pessoais -->
+      <fieldset>
+        <legend>Informações pessoais</legend>
+        <!-- LINHA 1 -->
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label for="idMatricula">Matrícula: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" id="idMatricula" name="matricula" class="form-control" maxlength="7" required>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="idNome">Nome completo: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" id="idNome" name="nome" class="form-control" maxlength="60" required>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="idApelido">Apelido:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" id="idApelido" name="apelido" class="form-control" maxlength="20">
+            </div>
+          </div>
+        </div>
+        <!-- LINHA 2 -->
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label for="idRg">RG: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+              <input type="text" id="idRg" name="rg" class="form-control" maxlength="12" required>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="idCpf">CPF: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+              <input type="text" id="idCpf" name="cpf" class="form-control" maxlength="14" required>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="idDtNasc">Data de Nascimento: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              <input type="date" id="idDtNasc" name="dtNasc" class="form-control" maxlength="8" required>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <!-- ./ Informações Pessoais -->
+
+      <!-- Informações de Contato -->
+      <fieldset>
+        <legend>Dados para Contato</legend>
+        <!-- LINHA 1 -->
+        <div class="row">
+          <div class="form-group col-md-3">
+            <label for="idTel">Telefone Residencial:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+              <input type="text" id="idTelResid" class="form-control" maxlength="11">
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="idCel">Celular:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+              <input type="text" id="idCel" class="form-control" maxlength="11">
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="idTelRec">Telefone de Recado:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
+              <input type="text" id="idTelRec" class="form-control" maxlength="11">
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="idTelRec">Nome do Contato:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" id="idNomeContato" class="form-control" maxlength="60">
+            </div>
+          </div>
+        </div>
+        <!-- LINHA 2 -->
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="idEmail">E-mail: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+              <input type="text" id="idEmail" class="form-control" maxlength="50" required>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="idEmail2">E-mail Secundário:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+              <input type="text" id="idEmail2" class="form-control" maxlength="50">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <!-- ./ Informações de Contato -->
+
+      <!-- Endereço -->
+      <fieldset>
+        <legend>Endereço</legend>
+        <!-- LINHA 1 -->
+        <div class="row">
+          <div class="form-group col-md-7">
+            <label for="idLog">Logradouro: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+              <input type="text" id="idLog" class="form-control" maxlength="70" required>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="idNum">Número: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+              <input type="text" id="idNum" class="form-control" maxlength="5" required>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="idComp">Complemento:</label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+              <input type="text" id="idComp" class="form-control" maxlength="20">
+            </div>
+          </div>
+        </div>
+        <!-- LINHA 2 -->
+        <div class="row">
+          <div class="form-group col-md-3">
+            <label for="idBairro">Bairro: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+              <input type="text" id="idBairro" class="form-control" maxlength="20" required>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="idCep">CEP: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+              <input type="text" id="idCep" class="form-control" maxlength="8" required>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="idEstado">Estado: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+              <select class="form-control" id="isEstados" ng-options="r for r in estados" ng-model="selestados" required>
+                <option value="" disabled selected>Selecione o Estado</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="idCidade">Cidade: <span class="obrigatorio">*</span></label>
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+              <input type="text" id="idCidade" class="form-control" maxlength="20" required>
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+      <!-- ./ Endereço -->
+
+      <!-- Outras Informações -->
+      <fieldset>
+        <legend>Outras Informações</legend>
+        <div class="row">
+          <div class="col-md-8">
+            <label for="idComent">Observações:</label>
+            <textarea id="idComent" rows="8" cols="80" class="form-control" maxlength="500" style="resize: none" ng-model="caracteres"></textarea>
+            <span>Você ainda pode digitar {{500 - caracteres.length}} caracteres.</span>
+          </div>
+        </div>
+      </fieldset>
+      <!-- ./ Outras Informações -->
+
+      <!-- SUBMIT / RESET -->
+      <fieldset class="botoes">
+        <div class="row">
+          <div class="col-md-1">
+            <input type="submit" name="submit" value="Enviar" class="btn btn-lg btn-success">
+          </div>
+          <div class="col-md-1">
+            <input type="reset" name="reset" value="Limpar" class="btn btn-lg btn-default">
+          </div>
+        </div>
+      </fieldset>
+      <!-- ./ SUBMIT / RESET -->
+    </form>
+    <!-- ./ MAIN (formulário) -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container-fluid text-center">
+        <p class="text-muted">Formulário criado por <i>{{criador}}</i>.</p>
+      </div>
+    </footer>
+    <!-- ./ FOOTER -->
+
+  </div>
+  <!-- ./ CONTEÚDO DA PÁGINA -->
+
+  <!-- Imports JS -->
+  <!-- jQuery -->
+  <script src="assets\plugins\jquery-3.2.1.min.js"></script>
+  <!-- jQuery Mask Plugin -->
+  <script src="assets\plugins\jquery.mask.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="assets\plugins\bootstrap\js\bootstrap.min.js"></script>
+  <!-- AngularJS -->
+  <script src="assets\plugins\angular\angular.min.js"></script>
+  <!-- AngularJS i18n -->
+  <script src="assets\plugins\angular\i18n\angular-locale_pt-br.js"></script>
+  <!-- Módulo para AngularJS -->
+  <script src="assets\js\modulo-app.js"></script>
+  <!-- Controller da navbar -->
+  <script src="assets\js\navbar-ctrl.js"></script>
+  <!-- Controller do formulário -->
+  <script src="assets\js\form-01-ctrl.js"></script>
+  <!-- ./ Imports JS -->
+
+</body>
+</html>

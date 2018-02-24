@@ -1,0 +1,29 @@
+body{
+  background-color: #f3f7ff !important;
+}
+.navbar{
+  border-radius: 0 !important;
+}
+.container{
+  margin-top: 50px !important;
+}
+
+/* FORM 1 */
+.obrigatorio{
+  color: #FF0000;
+}
+.botoes{
+  margin-top: 30px;
+}
+.footer{
+  margin-top: 100px !important;
+}
+
+/* ALUNOS */
+.selecionado{
+  background-color: #d9edf7;
+  font-weight: bold;
+}
+.linha{
+  margin-top: 10px;
+}
